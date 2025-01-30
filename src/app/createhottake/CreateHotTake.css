@@ -1,0 +1,18 @@
+.hot-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hot-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.hot-body {
+  display: flex;
+  flex-direction: column;
+}
+
+

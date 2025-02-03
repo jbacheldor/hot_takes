@@ -1,4 +1,4 @@
-import { createClient } from 'hottake/app/server';
+import { createClient } from 'hottake/app/server/datastoreclient';
 
 export default async function HotTakes() {
   const supabase = await createClient();

@@ -20,9 +20,11 @@ const initalFormState = {
 };
 
 function HotTakes() {
+  const pathName = process.env.NEXT_PUBLIC_BASE_URL
   const [formState, setFormState] = useState<CreateHotTake>(initalFormState);
+
   const insertHotTake = () => {
-    fetch('http://localhost:3000/server/inserthottake', {
+    fetch(`${pathName}/server/inserthottake`, {
       method: 'POST',
       body: JSON.stringify(formState),
     });

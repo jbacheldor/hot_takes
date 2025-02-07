@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <HotTakes gameId={'rc'} />
+        <HotTakes />
       </main>
     </div>
   );

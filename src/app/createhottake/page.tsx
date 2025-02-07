@@ -19,10 +19,8 @@ const initalFormState = {
   hot_take: '',
 };
 
-function HotTakes({ gameId }: { gameId: string }) {
+function HotTakes() {
   const [formState, setFormState] = useState<CreateHotTake>(initalFormState);
-  console.log('gameId', gameId);
-
   const insertHotTake = () => {
     fetch('http://localhost:3000/server/inserthottake', {
       method: 'POST',

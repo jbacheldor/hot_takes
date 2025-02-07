@@ -20,7 +20,7 @@ const initalFormState = {
 };
 
 function HotTakes() {
-  const pathName = process.env.NEXT_PUBLIC_BASE_URL
+  const pathName = process.env.BASE_URL
   const [formState, setFormState] = useState<CreateHotTake>(initalFormState);
 
   const insertHotTake = () => {

@@ -24,9 +24,18 @@ function HotTakes() {
   const [formState, setFormState] = useState<CreateHotTake>(initalFormState);
 
   const insertHotTake = () => {
-    fetch(`${pathName}/server/inserthottake`, {
+    const hotTakeData = {
+      full_name: `${formState.first_name} ${formState.last_name}`,
+      hot_take_game: hot_take_game_id,
+      hot_take: formState.hot_take,
+    }
+
+    const insertPath = `${pathName}/server/inserthottake`
+    console.log('path is', insertPath)
+
+    fetch(insertPath, {
       method: 'POST',
-      body: JSON.stringify(formState),
+      body: JSON.stringify(hotTakeData),
     });
     setFormState(initalFormState);
   };
@@ -65,9 +74,6 @@ function HotTakes() {
             value={formState?.last_name}
             onChange={onChangeHandler}
           ></input>
-        </label>
-        <label>
-          name<input></input>
         </label>
         <button onClick={insertHotTake}>submit</button>
       </div>

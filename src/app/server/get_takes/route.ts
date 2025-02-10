@@ -2,20 +2,20 @@ import { createClient } from 'hottake/app/server/datastoreclient';
 
 import { NextResponse } from 'next/server';
 
-// export const revalidate = 60;
-
 export async function GET() {
+
   try {
     const client = await createClient();
     const { error, data: hot_takes } = await client
-      .from('hot_take_game')
+      .from('hot_take')
       .select();
 
-    // return a list of users and takes
     if (error) {
       throw new Error('could not process request', error);
     }
-    return NextResponse.json({ hot_takes });
+    const full_names: Array<string> = hot_takes.map(take => take.full_name );
+
+    return NextResponse.json({ hot_takes, full_names });
   } catch (e) {
     console.log('hark an error is occurring', e);
     return NextResponse.json(

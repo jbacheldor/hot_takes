@@ -1,13 +1,10 @@
 'use client';
 import './CreateHotTake.css';
 import { useState } from 'react';
+import {BaseHotTake} from "hottake/types/all";
 
-type CreateHotTake = {
-  first_name: string;
-  last_name: string;
-  hot_take_game: string;
-  hot_take: string;
-};
+
+
 
 // TODO bring this from URL param
 const hot_take_game_id = '8d1b08be-3aab-4d4f-a95d-41c82397a897';
@@ -21,7 +18,7 @@ const initalFormState = {
 
 function HotTakes() {
   const pathName = process.env.BASE_URL
-  const [formState, setFormState] = useState<CreateHotTake>(initalFormState);
+  const [formState, setFormState] = useState<BaseHotTake>(initalFormState);
 
   const insertHotTake = () => {
     const hotTakeData = {

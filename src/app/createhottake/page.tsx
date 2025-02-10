@@ -29,11 +29,7 @@ function HotTakes() {
       hot_take_game: hot_take_game_id,
       hot_take: formState.hot_take,
     }
-
-    const insertPath = `${pathName}/server/inserthottake`
-    console.log('path is', insertPath)
-
-    fetch(insertPath, {
+    fetch(`${pathName}/server/inserthottake`, {
       method: 'POST',
       body: JSON.stringify(hotTakeData),
     });

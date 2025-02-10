@@ -25,8 +25,6 @@ function Votes() {
   useEffect(() => {
     // This effect runs after the component renders
     console.log('using effect');
-
-    // Example of fetching data
     async function getHotTakeData() {
       try {
         const response = await fetch(`${pathName}/server/get_takes`, {
@@ -41,7 +39,6 @@ function Votes() {
       }
     }
     getHotTakeData();
-    // Example of cleanup function (optional)
     return () => {
       console.log('Component unmounted or effect re-ran');
     };

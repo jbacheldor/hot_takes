@@ -11,7 +11,6 @@ export async function GET() {
       .from('hot_take_game')
       .select();
 
-    // return a list of users and takes
     if (error) {
       throw new Error('could not process request', error);
     }

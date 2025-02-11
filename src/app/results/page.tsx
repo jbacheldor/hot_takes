@@ -1,6 +1,6 @@
 'use client';
 import './results.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type dataType = {
   full_name: string,
@@ -82,12 +82,27 @@ const initialData = {
 
 
 function Results() {
-  // const pathName = process.env.BASE_URL
+  const pathName = process.env.BASE_URL
   const [data, setData] = useState<resultsType>(initialData)
+  const [isLoading, setIsLoading]= useState(true)
 
-  const test = () => {
-    setData(initialData)
-  }
+  useEffect(()=> {
+    const getData = async () => {
+      try {
+        const res = await fetch(`${pathName}/server/getresults`, {
+          method: 'GET'
+        });
+        const data = await res.json();
+        setData(data)
+        setIsLoading(false)
+      }catch (e){
+        alert('Error baby!!!!')
+        console.log(e)
+      }
+
+    }
+    getData()
+  }, [])
 
   return (
     <div className="results-container">
@@ -97,7 +112,7 @@ function Results() {
       <hr/>
       <div id='resultsHeader'>
         <span className="headers">Performance Eval!!</span>
-        <span className="headers">% accucracy!!!</span>
+        <span className="headers">% accuracy!!!</span>
       </div>
       <hr/>
       <div id='results'>
@@ -107,7 +122,7 @@ function Results() {
           <span className="headers">percent</span>
         </div>
         <div id='data-rows'>
-          {data.data && data.data.map((value, key) => {
+          {!isLoading && data.data && data.data.map((value, key) => {
             return (
             <div id="resultsrows" key={key}>
               <span className="values">
@@ -116,7 +131,7 @@ function Results() {
               <span className="hotTake">
                 {value.hotTake}
               </span>
-              <span className="values" onClick={test}>
+              <span className="values">
                 {value.percent}
               </span>
             </div>)

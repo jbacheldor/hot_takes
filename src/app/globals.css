@@ -1,5 +1,5 @@
 :root {
-  --background: #ffffff;
+  --background: #889882;
   --foreground: #171717;
 }
 
@@ -8,6 +8,12 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+.orelega-one-regular {
+  font-family: "Orelega One", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 html,

@@ -10,8 +10,7 @@ import {BaseHotTake} from "hottake/types/all";
 const hot_take_game_id = '8d1b08be-3aab-4d4f-a95d-41c82397a897';
 
 const initalFormState = {
-  first_name: '',
-  last_name: '',
+  full_name: '',
   hot_take_game: hot_take_game_id,
   hot_take: '',
 };
@@ -22,7 +21,7 @@ function HotTakes() {
 
   const insertHotTake = () => {
     const hotTakeData = {
-      full_name: `${formState.first_name} ${formState.last_name}`,
+      full_name: formState.full_name.toLowerCase(),
       hot_take_game: hot_take_game_id,
       hot_take: formState.hot_take,
     }
@@ -53,18 +52,10 @@ function HotTakes() {
           ></input>
         </label>
         <label>
-          first name
+          full name
           <input
-            name="first_name"
-            value={formState?.first_name}
-            onChange={onChangeHandler}
-          ></input>
-        </label>
-        <label>
-          last name
-          <input
-            name="last_name"
-            value={formState?.last_name}
+            name="full_name"
+            value={formState?.full_name}
             onChange={onChangeHandler}
           ></input>
         </label>

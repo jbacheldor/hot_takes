@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Dropdown.css'
 
 function Dropdown({ fullNames, hotTakeId, handleSelect }: {fullNames: Array<string>, hotTakeId: string, handleSelect: (hotTakeId: string, guessFullName: string) => void}) {
     const [isOpen, setIsOpen] = useState(false);

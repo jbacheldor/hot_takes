@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 // import { Geist, Geist_Mono, Orelega_One } from 'next/font/google';
 import './globals.css';
 import localFont from "next/font/local";
+import {Header} from "hottake/components/Header";
 
 // const geistSans = Geist({
 //   variable: '--font-geist-sans',
@@ -35,7 +36,8 @@ export default function RootLayout({
     <html lang="en">
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
       <body className={`${orelegaOne.variable}`}>
-        {children}
+      <Header />
+      {children}
       </body>
     </html>
   );

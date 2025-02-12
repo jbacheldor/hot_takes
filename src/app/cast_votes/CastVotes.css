@@ -14,3 +14,37 @@
   display: flex;
   flex-direction: column;
 }
+
+.hot-take-vote {
+  display: flex;
+  flex-direction: row;
+}
+
+/*.hot-take-vote:first-child {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*}*/
+
+
+/*.hot-take-vote:last-child {*/
+/*  display: flex;*/
+/*  align-self: flex-end;*/
+/*}*/
+
+.hot-span-vote {
+  display: flex;
+  border-radius: 15px;
+  background-color: #C5D6BF;
+  max-width: 50%;
+  min-width: 50%;
+  padding: 5px;
+  justify-content: right;
+  align-self: center;
+}
+
+.hot-take-vote {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+

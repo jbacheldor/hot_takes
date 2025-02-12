@@ -108,10 +108,6 @@ function Results() {
 
   return (
     <div className="results-container">
-      <span id='mainTitle'>
-      HOT ONES (the ones being takes)
-      </span>
-      <hr/>
       <div id='resultsHeader'>
         <span className="headers">Performance Eval!!</span>
         <span className="headers">% accuracy!!!</span>

@@ -1,6 +1,7 @@
 'use client';
 import './results.css';
 import { useEffect, useState } from 'react';
+import {SubHeader} from "hottake/components/SubHeader";
 
 type dataType = {
   full_name: string,
@@ -107,12 +108,8 @@ function Results() {
   }, [])
 
   return (
-    <div className="results-container">
-      <div id='resultsHeader'>
-        <span className="headers">Performance Eval!!</span>
-        <span className="headers">% accuracy!!!</span>
-      </div>
-      <hr/>
+    <div>
+      <SubHeader subHeaders={["Performance Eval!!", "% accuracy!!!"]}/>
       <div id='results'>
         <div id='columnheaders'>
           <span className="headers">actual</span>

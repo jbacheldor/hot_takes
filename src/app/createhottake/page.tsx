@@ -2,6 +2,7 @@
 import './CreateHotTake.css';
 import { useState } from 'react';
 import {BaseHotTake} from "hottake/types/all";
+import {SubHeader} from "hottake/components/SubHeader";
 
 
 
@@ -37,12 +38,10 @@ function HotTakes() {
   };
 
   return (
-    <div className="hot-container">
-      <div className="hot-header">
-        <h2>Hot Takes</h2>
-        <div>submit your hot take here</div>
-      </div>
-      <div className={'hot-body'}>
+    <div>
+        <SubHeader subHeaders={["submit your hot take here"]}/>
+
+      <div className='hot-body'>
         <label>
           hot take
           <input

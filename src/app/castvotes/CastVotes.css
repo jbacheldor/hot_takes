@@ -20,17 +20,6 @@
   flex-direction: row;
 }
 
-/*.hot-take-vote:first-child {*/
-/*  display: flex;*/
-/*  flex-wrap: wrap;*/
-/*}*/
-
-
-/*.hot-take-vote:last-child {*/
-/*  display: flex;*/
-/*  align-self: flex-end;*/
-/*}*/
-
 .hot-span-vote {
   display: flex;
   border-radius: 15px;
@@ -48,3 +37,17 @@
   justify-content: space-around;
 }
 
+.votes-column-headers{
+  display: flex;
+  justify-content: space-around;
+}
+
+.voter-full-name{
+  padding: 5px;
+}
+
+.submit-votes-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

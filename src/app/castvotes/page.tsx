@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {HotTakeReturnType, SubmitVotes} from "hottake/types/all";
 import Dropdown from "hottake/components/Dropdown";
 import {redirect} from "next/navigation";
+import {SubHeader} from "hottake/components/SubHeader";
 
 // TODO bring this from URL param
 const hot_take_game_id = '8d1b08be-3aab-4d4f-a95d-41c82397a897';
@@ -79,27 +80,10 @@ function CastVotes() {
   }
 
   return (
-    <div className="hot-container">
-      <div className="hot-header">
-        <h2>Votes</h2>
-        <hr />
-        <div>submit your votes</div>
-      </div>
-      <div className={'hot-body'}>
-        <label>
-          full name
-          <input
-              name="full_name"
-              value={formState?.full_name}
-              onChange={onFullNameChange}
-          ></input>
-        </label>
-        <hr/>
-        <div id='columnheaders'>
-          <span className="headers">name</span>
-          <span className="headers">hot take</span>
-        </div>
-        <hr/>
+    <div>
+      <SubHeader subHeaders={["Votes! Submit your votes!"]}/>
+      <SubHeader subHeaders={["hot take", "assumed author"]}/>
+      <div className='hot-body'>
         {
           isLoading ? <>loading</> : hotTakeData.hot_takes.map((take, i) =>
               <div key={`hot-take-${i}`} className="hot-take-vote">
@@ -108,7 +92,17 @@ function CastVotes() {
                           handleSelect={updateVotes}/>
               </div>)
         }
+        <div className="submit-votes-row">
+        <label>
+          <span className='voter-full-name'>voter full name</span>
+          <input
+              name="full_name"
+              value={formState?.full_name}
+              onChange={onFullNameChange}
+          ></input>
+        </label>
         <button onClick={submitVotes}>submit</button>
+        </div>
       </div>
     </div>
   );

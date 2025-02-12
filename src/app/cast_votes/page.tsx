@@ -77,19 +77,31 @@ function CastVotes() {
     <div className="hot-container">
       <div className="hot-header">
         <h2>Votes</h2>
+        <hr />
         <div>submit your votes</div>
       </div>
       <div className={'hot-body'}>
         <label>
           full name
           <input
-            name="full_name"
-            value={formState?.full_name}
-            onChange={onFullNameChange}
+              name="full_name"
+              value={formState?.full_name}
+              onChange={onFullNameChange}
           ></input>
         </label>
+        <hr/>
+        <div id='columnheaders'>
+          <span className="headers">name</span>
+          <span className="headers">hot take</span>
+        </div>
+        <hr/>
         {
-          isLoading ? <>loading</> : hotTakeData.hot_takes.map((take, i) => <div key={i}><p>{take.hot_take}</p><Dropdown fullNames={hotTakeData.full_names} hotTakeId={take.id} handleSelect={ updateVotes} /></div>)
+          isLoading ? <>loading</> : hotTakeData.hot_takes.map((take, i) =>
+              <div key={i} className="hot-take-vote">
+                <span className={'hot-span-vote'}>{take.hot_take}</span>
+                <Dropdown fullNames={hotTakeData.full_names} hotTakeId={take.id}
+                          handleSelect={updateVotes}/>
+              </div>)
         }
         <button onClick={submitVotes}>submit</button>
       </div>

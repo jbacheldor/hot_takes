@@ -1,6 +1,6 @@
 'use client';
-import './Votes.css';
-import {useEffect, useState} from 'react';
+import './CastVotes.css';
+import React, {useEffect, useState} from 'react';
 import {HotTakeReturnType, SubmitVotes} from "hottake/types/all";
 import Dropdown from "hottake/components/Dropdown";
 
@@ -13,7 +13,8 @@ const initialFormState = {
   votes: [],
 };
 
-function Votes() {
+
+function CastVotes() {
   const pathName = process.env.BASE_URL
   const [formState, setFormState] = useState<SubmitVotes>(initialFormState);
 
@@ -23,8 +24,6 @@ function Votes() {
 
 
   useEffect(() => {
-    // This effect runs after the component renders
-    console.log('using effect');
     async function getHotTakeData() {
       try {
         const response = await fetch(`${pathName}/server/get_takes`, {
@@ -38,33 +37,40 @@ function Votes() {
         setIsLoading(false);
       }
     }
-    getHotTakeData();
+    const result = getHotTakeData();
+    console.log('getHotTakeData result', result)
     return () => {
       console.log('Component unmounted or effect re-ran');
     };
   }, []);
 
   const submitVotes = () => {
-    const hotTakeData = {
-      full_name: `${formState.full_name}`,
-      hot_take_game: hot_take_game_id,
-      votes: [],
-    }
-    fetch(`${pathName}/server/submit_votes/`, {
-      method: 'POST',
-      body: JSON.stringify(hotTakeData),
+    const seenTakes = new Set();
+    const votes = formState.votes.filter(item => {
+      const hotTake = item.hot_take
+      if (hotTake === "" || seenTakes.has(hotTake)) {
+        return false;
+      }
+      seenTakes.add(hotTake);
+      return true;
     });
+
+    const result = fetch(`${pathName}/server/cast_votes/`, {
+      method: 'POST',
+      body: JSON.stringify({...formState, votes}),
+    });
+    console.log('POST result', result)
     setFormState(initialFormState);
   };
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
+  const onFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormState({ ...formState, full_name: e.target.value });
   };
 
   function updateVotes(hotTakeId: string, guessFullName: string) {
-    // should juyst update the state and then submit votes will use it to hit server
-    console.log('hotTakeId', hotTakeId);
-    console.log('guessFullName', guessFullName);
+    const votes =  formState.votes
+    votes.push({full_name: guessFullName, hot_take: hotTakeId})
+    setFormState({ ...formState, votes});
   }
 
   return (
@@ -79,17 +85,16 @@ function Votes() {
           <input
             name="full_name"
             value={formState?.full_name}
-            onChange={onChangeHandler}
+            onChange={onFullNameChange}
           ></input>
         </label>
         {
           isLoading ? <>loading</> : hotTakeData.hot_takes.map((take, i) => <div key={i}><p>{take.hot_take}</p><Dropdown fullNames={hotTakeData.full_names} hotTakeId={take.id} handleSelect={ updateVotes} /></div>)
         }
-
         <button onClick={submitVotes}>submit</button>
       </div>
     </div>
   );
 }
 
-export default Votes;
+export default CastVotes;

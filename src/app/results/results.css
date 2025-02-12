@@ -5,7 +5,7 @@
     margin: 10px
 }
 
-#mainTitle {
+span#mainTitle {
     margin: 15px;
     color: white;
     display: flex;
@@ -42,46 +42,38 @@ div#resultsHeader{
 }
 span.headers {
     color: white;
+    background-color: none;
 }
 
-span.values {
-    border-radius: 15px;
-    background-color: #C5D6BF;
+span {
     padding: 15px;
     font-weight: 600;
     display: flex;
     align-self: center;
+    justify-content: center;
+}
+
+span.values {
+    min-width: 20%;
+    border-radius: 15px;
+    background-color: #C5D6BF;
+}
+
+span.percent {
+    min-width: 10%;
+    border-radius: 15px;
+    background-color: #C5D6BF;
 }
 
 span.hotTake {
     border-radius: 15px;
     background-color: #C5D6BF;
-    padding: 15px;
-    font-weight: 600;
     max-width: 50%;
     min-width: 50%
 }
-
-/* span {
-    border-radius: 15px;
-    background-color: #C5D6BF;
-    padding: 15px;
-} */
 
 div#data-rows {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-}
-
-span#name {
-}
-
-span#take {
-
-}
-
-
-span#percent {
-
 }

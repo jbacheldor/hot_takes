@@ -8,7 +8,8 @@ export async function GET() {
     const client = await createClient();
     const { error, data: results } = await client
       .from('hot_take')
-      .select(`full_name, hot_take, id, hot_take_game, vote (hot_take, full_name_guess, hot_take_game)`);
+      // .select(`full_name, hot_take, id, hot_take_game, vote (hot_take, full_name_guess, hot_take_game)`);
+      .select(`full_name, hot_take, id, vote (hot_take, full_name_guess, hot_take_game)`);
 
     if (error) {
       throw new Error('could not process request', error);

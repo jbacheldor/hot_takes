@@ -5,78 +5,79 @@ import { useEffect, useState } from 'react';
 type dataType = {
   full_name: string,
   id: number,
-  hotTake: string,
-  percent: number,
+  hot_take: string,
+  percent?: number,
+  vote?: []
 }
 
 type resultsType = {
-  data: dataType[]
+  results: dataType[]
 }
 
 const initialData = {
-  data: [{full_name: "eggs baby",
+  results: [{full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr  lorem ipsum or whatevr whatevr lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr  lorem ipsum or whatevr whatevr lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr  lorem ipsum or whatevr whatevr lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr  lorem ipsum or whatevr whatevr lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr  lorem ipsum or whatevr whatevr lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr  lorem ipsum or whatevr whatevr lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr  lorem ipsum or whatevr whatevr lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or lorem ipsum or whatevr lorem ipsum or whatevr lorem ipsum or whatevr  lorem ipsum or whatevr whatevr lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100},
   {full_name: "eggs baby",
   id: 0,
-  hotTake: "lorem ipsum or whatevr",
+  hot_take: "lorem ipsum or whatevr",
   percent: 100}]
 }
 
@@ -93,6 +94,7 @@ function Results() {
           method: 'GET'
         });
         const data = await res.json();
+        console.log('wjat is data', data.results)
         setData(data)
         setIsLoading(false)
       }catch (e){
@@ -121,18 +123,19 @@ function Results() {
           <span className="headers">spicy spicy takes</span>
           <span className="headers">percent</span>
         </div>
+        {isLoading}
         <div id='data-rows'>
-          {!isLoading && data.data && data.data.map((value, key) => {
+          {data.results && data.results.map((value, key) => {
             return (
             <div id="resultsrows" key={key}>
               <span className="values">
                 {value.full_name}
               </span>
               <span className="hotTake">
-                {value.hotTake}
+                {value.hot_take}
               </span>
-              <span className="values">
-                {value.percent}
+              <span className="percent">
+                {value.percent ? value.percent : 100}
               </span>
             </div>)
           })}

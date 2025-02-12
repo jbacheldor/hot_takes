@@ -3,6 +3,7 @@ import './CastVotes.css';
 import React, {useEffect, useState} from 'react';
 import {HotTakeReturnType, SubmitVotes} from "hottake/types/all";
 import Dropdown from "hottake/components/Dropdown";
+import {redirect} from "next/navigation";
 
 // TODO bring this from URL param
 const hot_take_game_id = '8d1b08be-3aab-4d4f-a95d-41c82397a897';
@@ -26,7 +27,7 @@ function CastVotes() {
   useEffect(() => {
     async function getHotTakeData() {
       try {
-        const response = await fetch(`${pathName}/server/get_takes`, {
+        const response = await fetch(`${pathName}/server/gettakes`, {
             method: 'GET',
         });
         const result = await response.json();
@@ -44,8 +45,10 @@ function CastVotes() {
     };
   }, []);
 
-  const submitVotes = () => {
+  const submitVotes = async () => {
     const seenTakes = new Set();
+    formState.full_name = formState.full_name.toLowerCase();
+
     const votes = formState.votes.filter(item => {
       const hotTake = item.hot_take
       if (hotTake === "" || seenTakes.has(hotTake)) {
@@ -55,11 +58,13 @@ function CastVotes() {
       return true;
     });
 
-    const result = fetch(`${pathName}/server/cast_votes/`, {
+    const result = await fetch(`${pathName}/server/castvotes/`, {
       method: 'POST',
       body: JSON.stringify({...formState, votes}),
     });
     console.log('POST result', result)
+    if (result.ok) redirect('/results')
+
     setFormState(initialFormState);
   };
 
@@ -97,7 +102,7 @@ function CastVotes() {
         <hr/>
         {
           isLoading ? <>loading</> : hotTakeData.hot_takes.map((take, i) =>
-              <div key={i} className="hot-take-vote">
+              <div key={`hot-take-${i}`} className="hot-take-vote">
                 <span className={'hot-span-vote'}>{take.hot_take}</span>
                 <Dropdown fullNames={hotTakeData.full_names} hotTakeId={take.id}
                           handleSelect={updateVotes}/>

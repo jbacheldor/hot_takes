@@ -18,8 +18,8 @@ function Dropdown({ fullNames, hotTakeId, handleSelect }: {fullNames: Array<stri
             </button>
             {isOpen && (
                 <ul className="dropdown-list">
-                    {fullNames.map((option) => (
-                        <li key={option} onClick={() => handleOptionClick(option)}>
+                    {fullNames.map((option, index) => (
+                        <li key={`option-${index}`} onClick={() => handleOptionClick(option)}>
                             {option}
                         </li>
                     ))}

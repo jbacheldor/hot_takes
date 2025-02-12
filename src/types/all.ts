@@ -1,6 +1,5 @@
 export type BaseHotTake = {
-    first_name: string;
-    last_name: string;
+    full_name: string;
     hot_take_game: string;
     hot_take: string;
 };

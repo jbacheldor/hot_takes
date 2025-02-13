@@ -1,5 +1,24 @@
 
 ul.dropdown-list:has(li) {
     list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 5px;
+    background-color:  #c5d6bf;
+}
+li:hover {
+    border-radius-bottom-left: 5px;
+    background-color: #ADBEA7;
+    cursor: pointer;
+}
+
+.dropdown-button {
+    background-color: #c5d6bf;
+    padding: 15px;
+    border-radius: 10px;
+    border-style: none;
+    font-family: var(--font-my-font);
 }
 

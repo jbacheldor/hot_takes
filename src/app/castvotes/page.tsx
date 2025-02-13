@@ -93,9 +93,10 @@ function CastVotes() {
                           handleSelect={updateVotes}/>
               </div>)
         }
+        <hr/>
         <div className="submit-votes-row">
         <label>
-          <span className='voter-full-name'>voter full name</span>
+          <span className='voter-full-name'>voter full name: </span>
           <input
               name="full_name"
               value={formState?.full_name}

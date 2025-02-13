@@ -6,7 +6,7 @@ import {SubHeader} from "hottake/components/SubHeader";
 type dataType = {
   full_name: string,
   hot_take: string,
-  percentage?: number,
+  percentage: number,
 }
 
 type resultsType = {
@@ -15,7 +15,7 @@ type resultsType = {
 const initialData = {
   results: [{full_name: "",
   hot_take: "",
-  percentage: 0}, 
+  percentage: 0},
   {full_name: "",
   hot_take: "",
   percentage: 0},
@@ -42,7 +42,7 @@ function Results() {
         setData(data)
         setIsLoading(false)
       }catch (e){
-        alert('Error baby!!!!')
+        alert('Error!!!!')
         console.log(e)
       }
 
@@ -50,6 +50,7 @@ function Results() {
     getData()
   }, [])
 
+  const results = data.results.sort((a: dataType, b: dataType) => b.percentage - a.percentage)
   return (
     <div>
       <SubHeader subHeaders={["Performance Eval!!", "% accuracy!!!"]}/>
@@ -61,7 +62,7 @@ function Results() {
         </div>
         {isLoading}
         <div id='data-rows'>
-          {data.results && data.results.map((value, key) => {
+          {results && results.map((value, key) => {
             return (
             <div id="resultsrows" key={key}>
               <span className="values">

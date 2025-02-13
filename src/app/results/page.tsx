@@ -39,7 +39,6 @@ function Results() {
           method: 'GET'
         });
         const data = await res.json();
-        console.log('what is data', data.results)
         setData(data)
         setIsLoading(false)
       }catch (e){

@@ -4,9 +4,6 @@ import { useState } from 'react';
 import {BaseHotTake} from "hottake/types/all";
 import {SubHeader} from "hottake/components/SubHeader";
 
-
-
-
 // TODO bring this from URL param
 const hot_take_game_id = '8d1b08be-3aab-4d4f-a95d-41c82397a897';
 
@@ -44,7 +41,7 @@ function HotTakes() {
       <div className='hot-body'>
         <label>
           hot take
-          <input
+          <input  id='hot_take_input'
             name="hot_take"
             value={formState?.hot_take}
             onChange={onChangeHandler}
@@ -52,7 +49,7 @@ function HotTakes() {
         </label>
         <label>
           full name
-          <input
+          <input id='hot_take_name'
             name="full_name"
             value={formState?.full_name}
             onChange={onChangeHandler}

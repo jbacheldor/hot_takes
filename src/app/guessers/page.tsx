@@ -38,7 +38,7 @@ function Guessers() {
     console.log(result)
   }, [])
 
-
+  guesserData.sort((a, b) => b.correct_count - a.correct_count)
   console.log("guesserData", guesserData)
   return (
     <div>

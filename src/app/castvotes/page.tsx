@@ -15,6 +15,15 @@ const initialFormState = {
   votes: [],
 };
 
+function shuffleNames(array: Array<string>){
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+
 
 function CastVotes() {
   const pathName = process.env.BASE_URL
@@ -32,7 +41,7 @@ function CastVotes() {
             method: 'GET',
         });
         const result = await response.json();
-        const uniqueFullNames = Array.from(new Set(result.full_names));
+        const uniqueFullNames = shuffleNames(Array.from(new Set(result.full_names)));
         setHotTakeData({...result, full_names: uniqueFullNames});
         setIsLoading(false);
       } catch (error) {

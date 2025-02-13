@@ -5,10 +5,8 @@ import {SubHeader} from "hottake/components/SubHeader";
 
 type dataType = {
   full_name: string,
-  id: number,
   hot_take: string,
-  percent?: number,
-  vote?: []
+  percentage?: number,
 }
 
 type resultsType = {
@@ -16,21 +14,17 @@ type resultsType = {
 }
 const initialData = {
   results: [{full_name: "",
-  id: 0,
   hot_take: "",
-  percent: 0}, 
+  percentage: 0}, 
   {full_name: "",
-  id: 0,
   hot_take: "",
-  percent: 0},
+  percentage: 0},
   {full_name: "",
-  id: 0,
   hot_take: "",
-  percent: 0},
+  percentage: 0},
   {full_name: "",
-  id: 0,
   hot_take: "",
-  percent: 0}]
+  percentage: 0}]
 }
 
 function Results() {
@@ -45,7 +39,7 @@ function Results() {
           method: 'GET'
         });
         const data = await res.json();
-        console.log('wjat is data', data.results)
+        console.log('what is data', data.results)
         setData(data)
         setIsLoading(false)
       }catch (e){
@@ -78,7 +72,7 @@ function Results() {
                 {value.hot_take}
               </span>
               <span className="percent">
-                {value.percent ? value.percent : 100}
+                {value.percentage ? Math.round(value.percentage) : 0}%
               </span>
             </div>)
           })}

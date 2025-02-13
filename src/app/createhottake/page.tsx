@@ -30,7 +30,7 @@ function HotTakes() {
     setFormState(initalFormState);
   };
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
@@ -40,21 +40,22 @@ function HotTakes() {
 
       <div className='hot-body'>
         <label>
-          hot take
-          <input  id='hot_take_input'
+          <span>hot take</span>
+          <textarea  id='hot_take_input'
             name="hot_take"
             value={formState?.hot_take}
             onChange={onChangeHandler}
-          ></input>
+          ></textarea>
         </label>
         <label>
-          full name
+          <span>full name</span>
           <input id='hot_take_name'
             name="full_name"
             value={formState?.full_name}
             onChange={onChangeHandler}
           ></input>
         </label>
+        <hr id="submit-hr"/>
         <button onClick={insertHotTake}>submit</button>
       </div>
     </div>

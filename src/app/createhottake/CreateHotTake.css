@@ -17,27 +17,54 @@ label {
   color: white;
 }
 
-input {
+input, textarea {
   color: black;
   background-color: #C5D6BF;
   border-radius: 10px;
   border-style: none;
   min-width: 100px;
   width: 350px;
+  padding: 10px;
+  font-family: var(--font-my-font);
 }
 
-input:focus {
+input:focus,  textarea:focus{
   border-style: none;
   outline: none;
-  padding: 5px;
+  padding: 10px;
 }
 
 #hot_take_input {
-  max-height: 100px;
+  /* max-height: 100px; */
   height: 80px;
 }
 
 #hot_take_name {
-  max-height: 30px;
+  max-height: 35px;
   height: 70px;
+}
+
+span {
+  margin: 5px 0;
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border-style: none;
+  background-color: #C5D6BF;
+  font-family: var(--font-my-font);
+  margin: 15px 0;
+}
+
+button:hover {
+  background-color: #ADBEA7;
+  cursor: pointer;
+}
+
+hr#submit-hr {
+  margin: 10px;
+  border: 1px solid white;
+  border-radius: 15px;
+  width: 50%;
 }

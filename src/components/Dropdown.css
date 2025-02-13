@@ -7,6 +7,7 @@ ul.dropdown-list:has(li) {
     align-items: center;
     padding: 5px 5px;
     background-color:  #c5d6bf;
+    color: black;
 }
 li:hover {
     border-radius-bottom-left: 5px;
@@ -20,5 +21,6 @@ li:hover {
     border-radius: 10px;
     border-style: none;
     font-family: var(--font-my-font);
+    color: black;
 }
 

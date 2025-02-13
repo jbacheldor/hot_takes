@@ -2,6 +2,7 @@ import { createClient } from 'hottake/app/server/datastoreclient';
 import { FullHotTake, FullVote } from 'hottake/types/all';
 
 import { NextResponse } from 'next/server';
+import {SupabaseClient} from "@supabase/supabase-js";
 
 async function fetchHotTakes(client: SupabaseClient<never, 'public', never>) {
   const {error: hotTakeError, data: hotTakesData} = await client
@@ -14,6 +15,17 @@ async function fetchHotTakes(client: SupabaseClient<never, 'public', never>) {
   return hotTakes;
 }
 
+function getUniqueVotes(arr: Array<FullVote>) {
+  const seenValues = new Set();
+  return arr.filter(obj => {
+    const value = obj['full_name_voter'];
+    if (seenValues.has(value)) {
+      return false;
+    }
+    seenValues.add(value);
+    return true;
+  });
+}
 
 async function fetchVotes(client: SupabaseClient<never, 'public', never>) {
   const {error: voteError, data: voteData} = await client
@@ -37,12 +49,15 @@ export async function GET() {
 
     for(const hotTake of hotTakes){
       const hotTakeVotes = votes.filter((vote)=> vote.hot_take === hotTake.id)
-      const countOfVotes = hotTakeVotes.length
+      const uniqueHotTakeVotes = getUniqueVotes(hotTakeVotes)
 
       const correctVotes = votes.filter((vote)=> {
         return vote.full_name_guess === hotTake.full_name
       })
-      let percentage = countOfVotes ? (correctVotes.length / countOfVotes) * 100 : 0
+
+      const uniqueCorrectVotes = getUniqueVotes(correctVotes)
+
+      const percentage = uniqueHotTakeVotes ? (uniqueCorrectVotes.length / uniqueHotTakeVotes.length) * 100 : 0
 
       results.push({hot_take: hotTake.hot_take, percentage: percentage, full_name: hotTake.full_name})
     }

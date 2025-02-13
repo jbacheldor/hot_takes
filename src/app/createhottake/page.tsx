@@ -70,10 +70,8 @@ function HotTakes() {
           ></input>
         </label>
         <hr id="submit-hr"/>
-        <span id="warnings">
-        You only get one, submit wisely
-      </span>
-        <button onClick={insertHotTake}>submit</button>
+      <span>no more submissions - it's go time folks</span>
+        <button disabled >submit</button>
       </div>
     </div>
   );

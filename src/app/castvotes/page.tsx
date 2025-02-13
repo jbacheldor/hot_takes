@@ -32,7 +32,8 @@ function CastVotes() {
             method: 'GET',
         });
         const result = await response.json();
-        setHotTakeData(result);
+        const uniqueFullNames = Array.from(new Set(result.full_names));
+        setHotTakeData({...result, full_names: uniqueFullNames});
         setIsLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);

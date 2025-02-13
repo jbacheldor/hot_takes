@@ -29,7 +29,7 @@ function Guessers() {
         setGuesserData(resultData)
         setIsLoading(false)
       }catch (e){
-        alert('Error baby!!!!')
+        alert('Error!!!!')
         console.log(e)
       }
 

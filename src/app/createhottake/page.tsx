@@ -16,6 +16,7 @@ const initalFormState = {
 function HotTakes() {
   const pathName = process.env.BASE_URL
   const [formState, setFormState] = useState<BaseHotTake>(initalFormState);
+  const [warning, setWarning]= useState(false)
 
   const insertHotTake = () => {
     const hotTakeData = {
@@ -31,20 +32,32 @@ function HotTakes() {
   };
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
+    if(e.target.name == 'hot_take' && e.target.value.length > 500){
+      setWarning(true)
+    }
+    else if (e.target.name == 'hot_take' && e.target.value.length < 500){
+      setWarning(false)
+      setFormState({ ...formState, [e.target.name]: e.target.value });
+    }
+    else {
+      setFormState({ ...formState, [e.target.name]: e.target.value });
+    }
   };
 
   return (
     <div>
         <SubHeader subHeaders={["submit your hot take here"]}/>
-
       <div className='hot-body'>
         <label>
           <span>hot take</span>
+          {warning && 
+            <span id='warnings'>u do not need more than 500 characters </span>
+          }
           <textarea  id='hot_take_input'
             name="hot_take"
             value={formState?.hot_take}
             onChange={onChangeHandler}
+            maxLength={500}
           ></textarea>
         </label>
         <label>
@@ -53,9 +66,13 @@ function HotTakes() {
             name="full_name"
             value={formState?.full_name}
             onChange={onChangeHandler}
+            maxLength={50}
           ></input>
         </label>
         <hr id="submit-hr"/>
+        <span id="warnings">
+        You only get one, submit wisely
+      </span>
         <button onClick={insertHotTake}>submit</button>
       </div>
     </div>

@@ -68,3 +68,9 @@ hr#submit-hr {
   border-radius: 15px;
   width: 50%;
 }
+
+span#warnings {
+  display: flex;
+  justify-content: center;
+  color: black;
+}

@@ -33,26 +33,17 @@ export async function GET() {
     const hotTakes = await fetchHotTakes(client);
     const votes = await fetchVotes(client);
 
-    const hotTaketoAuthorName: Map<string, string> = new Map(hotTakes.map((hotTake) => [hotTake.id, hotTake.full_name]));
-
-    console.log('hot take to author name', hotTaketoAuthorName)
-    console.log("all the vots??", votes)
-    // hotTaketoAuthorName.get()
-
     const results = []
 
     for(const hotTake of hotTakes){
-      console.log("hot hot take", hotTake)
-      console.log("hot take id ", hotTake.id)
       const hotTakeVotes = votes.filter((vote)=> vote.hot_take === hotTake.id)
-      console.log("hotTakes Votes", hotTakeVotes)
-      const countOfVotes = hotTakeVotes.length + 1
-      console.log("countOfVotes", countOfVotes)
-      const correctVotes = votes.filter((vote)=> vote.full_name_guess === hotTake.full_name)
-      console.log("number of correct votes", correctVotes )
-      let percentage = correctVotes.length / countOfVotes
-      // console.log("percentage", percentage)
-      // console.log("countOfVotes", countOfVotes)
+      const countOfVotes = hotTakeVotes.length
+
+      const correctVotes = votes.filter((vote)=> {
+        return vote.full_name_guess === hotTake.full_name
+      })
+      let percentage = countOfVotes ? (correctVotes.length / countOfVotes) * 100 : 0
+
       results.push({hot_take: hotTake.hot_take, percentage: percentage, full_name: hotTake.full_name})
     }
 

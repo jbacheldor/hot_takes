@@ -2,6 +2,7 @@
 import './results.css';
 import { useEffect, useState } from 'react';
 import {SubHeader} from "hottake/components/SubHeader";
+import rawResults from '../assets/get_results.json'
 
 type dataType = {
   full_name: string,
@@ -28,26 +29,27 @@ const initialData = {
 }
 
 function Results() {
-  const pathName = process.env.BASE_URL
+  // const pathName = process.env.BASE_URL
   const [data, setData] = useState<resultsType>(initialData)
   const [isLoading, setIsLoading]= useState(true)
 
   useEffect(()=> {
-    const getData = async () => {
-      try {
-        const res = await fetch(`${pathName}/server/getresults`, {
-          method: 'GET'
-        });
-        const data = await res.json();
-        setData(data)
-        setIsLoading(false)
-      }catch (e){
-        alert('Error!!!!')
-        console.log(e)
-      }
-
-    }
-    getData()
+    // const getData = async () => {
+      // try {
+      //   const res = await fetch(`${pathName}/server/getresults`, {
+      //     method: 'GET'
+      //   });
+      //   const data = await res.json();
+      //   setData(data)
+      //   setIsLoading(false)
+      // }catch (e){
+      //   alert('Error!!!!')
+      //   console.log(e)
+      // }
+    // }
+    // getData()
+    setData(rawResults as resultsType)
+    setIsLoading(false)
   }, [])
 
   const results = data.results.sort((a: dataType, b: dataType) => b.percentage - a.percentage)

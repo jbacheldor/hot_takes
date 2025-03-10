@@ -1,0 +1,326 @@
+{
+  "hot_takes": [
+    {
+      "id": "74734849-7085-4310-848f-374de03200ed",
+      "created_at": "2025-02-12T20:21:16.076985+00:00",
+      "hot_take": "snowmen are scary",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "aparna n"
+    },
+    {
+      "id": "b22e150d-a2a2-44ce-9e13-fbb40308d5fa",
+      "created_at": "2025-02-12T21:17:33.542996+00:00",
+      "hot_take": "this is a really fun game",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "bradley dettmer"
+    },
+    {
+      "id": "b015ac3b-d00c-49a8-bd4a-5f37178dcc56",
+      "created_at": "2025-02-12T23:24:52.64363+00:00",
+      "hot_take": "English spelling is really good at doing one specific thing: preserving histories of words",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "jesse chen"
+    },
+    {
+      "id": "a4eef316-e0f6-4cae-81cf-32dde147cc13",
+      "created_at": "2025-02-12T23:58:26.347532+00:00",
+      "hot_take": "Game of Thrones' final season  wasn't too bad.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "pierre"
+    },
+    {
+      "id": "0cfd6522-2b3d-4778-87f3-c2d1897c7d5c",
+      "created_at": "2025-02-13T17:26:34.327166+00:00",
+      "hot_take": "Peanut butter is gross",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "sydney lefevre"
+    },
+    {
+      "id": "7911f68c-9be8-409e-8405-755fa64a9395",
+      "created_at": "2025-02-13T17:26:34.396607+00:00",
+      "hot_take": "Imperial is a good measurement system for human UX. For the vast majority of human measurements, imperial has you saying numbers <10-12 which is friendly and convenient. “They are 6 ft” 🙂 vs “they are 182 centimeters” 🤮. Is anyone honestly out here saying “pls pour me a deciliter”? good grief",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "spencer kee"
+    },
+    {
+      "id": "81c5319e-05cb-439e-93c5-dab37a79c76e",
+      "created_at": "2025-02-13T17:26:59.480132+00:00",
+      "hot_take": "There are 0 good American snack foods.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "basil muthalaly"
+    },
+    {
+      "id": "52813e7a-3812-4968-8121-b6e04d8f0994",
+      "created_at": "2025-02-13T17:27:52.205919+00:00",
+      "hot_take": "Winter is a good season",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "maura"
+    },
+    {
+      "id": "cf4dfd40-d0b7-4720-8d63-80ddef31e3dd",
+      "created_at": "2025-02-13T17:56:30.601383+00:00",
+      "hot_take": "iPhones should have a button that says \"i understand what i'm doing is wildly insecure but it's ok, i'm doing it as a bit, just let me\"",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "nolen royalty"
+    },
+    {
+      "id": "4f1f61cb-ade7-494c-ac51-1b9cbfcb307d",
+      "created_at": "2025-02-13T18:04:29.509346+00:00",
+      "hot_take": "Landlords should have to live in the buildings they rent out",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "justin schulz"
+    },
+    {
+      "id": "48781660-fd6e-47d8-b8b3-15693773e561",
+      "created_at": "2025-02-13T18:05:25.828211+00:00",
+      "hot_take": "french food is overrated. would rather have literally any other cuisine. (Teon forgive me.)",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "kevin boyer"
+    },
+    {
+      "id": "aee58c66-d094-48b0-8955-7458cf616bd0",
+      "created_at": "2025-02-13T18:28:21.500535+00:00",
+      "hot_take": "Order the mac 'n cheese pancakes.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "jamie palatnik"
+    },
+    {
+      "id": "0a76d228-4b02-4de7-9e80-77f4460c107a",
+      "created_at": "2025-02-13T18:51:04.06889+00:00",
+      "hot_take": "Food in NYC is mid",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "laura woods"
+    },
+    {
+      "id": "808cf499-90f7-4d25-90b5-5cc31e1f711b",
+      "created_at": "2025-02-13T18:58:06.924292+00:00",
+      "hot_take": "All conversations about LLMs and blockchains are inherently political and by Recurse rules should be opt-in.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "nate woods"
+    },
+    {
+      "id": "bc117ee3-2545-4e0e-97f2-434fa8f8596b",
+      "created_at": "2025-02-13T18:58:51.92293+00:00",
+      "hot_take": "small talk is good and we should talk about the weather more.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "priya misner"
+    },
+    {
+      "id": "2921c96d-63e0-47f7-8b13-b82678544f71",
+      "created_at": "2025-02-13T19:00:11.705034+00:00",
+      "hot_take": "a light color theme is better than dark, we are collectively brainwashed",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "victor"
+    },
+    {
+      "id": "821f7f72-5c26-4b23-96e7-04acb5b822d0",
+      "created_at": "2025-02-13T19:02:22.69229+00:00",
+      "hot_take": "Concerts should be quieter and they should always provide seats",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "jack c"
+    },
+    {
+      "id": "aa1e0791-52a0-4d82-9a9b-918d13826c9d",
+      "created_at": "2025-02-13T19:04:06.453423+00:00",
+      "hot_take": "Lucid dreaming and sleep paralysis are fake",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "blake g"
+    },
+    {
+      "id": "d71fb78d-1350-4477-b87d-0bd4c088694f",
+      "created_at": "2025-02-13T19:04:34.346247+00:00",
+      "hot_take": "You can't be on time, you're either early or late",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "tywen k"
+    },
+    {
+      "id": "65db1b9d-550b-4349-a411-ac5fcf6c4332",
+      "created_at": "2025-02-13T19:05:31.834917+00:00",
+      "hot_take": "I don't consider this hot, but Panic Nova IDE is the best IDE. ",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "sophia"
+    },
+    {
+      "id": "851f4ed7-3791-4f14-b465-6ec6edf55161",
+      "created_at": "2025-02-13T19:06:29.433325+00:00",
+      "hot_take": "there should be a square footage requirement to own a large dog in the city",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "finn clarke"
+    },
+    {
+      "id": "b889a2ae-cac4-4da5-a55c-700499418c90",
+      "created_at": "2025-02-13T19:08:31.625444+00:00",
+      "hot_take": "white pizza (w/o tomato sauce) only serves to make conventional pizza better in comparison",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "suhith rajesh"
+    },
+    {
+      "id": "640e96ce-1905-4a8b-ba05-7210946ef993",
+      "created_at": "2025-02-13T19:14:58.201898+00:00",
+      "hot_take": "\"The true New Yorker secretly believes that people living anywhere else have to be, in some sense, kidding.“ - John Updike",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "nick bergson-shilcock"
+    },
+    {
+      "id": "03fdc9ed-99a6-47ee-bd8c-0776c38618fe",
+      "created_at": "2025-02-13T19:21:39.812387+00:00",
+      "hot_take": "All programming languages should use the LISP syntax",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "hazem"
+    },
+    {
+      "id": "6861542e-9571-4251-bbc1-40840f5d102c",
+      "created_at": "2025-02-13T19:24:52.221672+00:00",
+      "hot_take": "if you have your first and last name on social media then you are asking for people to strike up conversations about your internet presence. you can't be both aloof and available.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "jess bacheldor"
+    },
+    {
+      "id": "01148ea2-f5e7-47a3-8650-85a2cd8022ee",
+      "created_at": "2025-02-13T19:27:50.92052+00:00",
+      "hot_take": "Star Wars is ridiculously overrated",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "sam wlody"
+    },
+    {
+      "id": "7edddb03-dcb4-443c-87d3-1a286df1c2fc",
+      "created_at": "2025-02-13T19:31:50.532674+00:00",
+      "hot_take": "those people with the cilantro-tastes-like-soap gene are, unfortunately, just less evolved and i am sorry for you.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "michael chung"
+    },
+    {
+      "id": "68632d60-1ced-4160-81c7-f6d42db4d848",
+      "created_at": "2025-02-13T19:36:10.804991+00:00",
+      "hot_take": "Rain, rain, DON'T go away. (Come and go as you please)",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "daniel sosebee"
+    },
+    {
+      "id": "e21f2bac-1e95-43aa-a9f1-eb63646f48d2",
+      "created_at": "2025-02-13T19:40:33.55078+00:00",
+      "hot_take": "Klaus is the best Christmas movie ever made.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "sam tetef"
+    },
+    {
+      "id": "933003fc-e3fd-42f5-bf78-b589a2dc7ed5",
+      "created_at": "2025-02-13T19:41:50.122815+00:00",
+      "hot_take": "Pokemon sucks it's pure nostalgia bait garbage",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "olive abbott"
+    },
+    {
+      "id": "573239d0-3f7e-44df-8fae-5ab8d24a90d5",
+      "created_at": "2025-02-13T19:59:17.793222+00:00",
+      "hot_take": "asparagus is the best vegetable",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "sherry bai"
+    },
+    {
+      "id": "373e1028-b2b9-4bf6-826b-cc818f149795",
+      "created_at": "2025-02-13T20:09:00.465543+00:00",
+      "hot_take": "Social media is a net-positive for humanity.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "russell pasetes"
+    },
+    {
+      "id": "7d223500-2767-4522-9ae6-3f2954504952",
+      "created_at": "2025-02-13T20:10:09.77692+00:00",
+      "hot_take": "I think potatoes could be the new apple if there was an extremely low effort way to cook them (so that you could basically grab one on the way out the door and eat it on the subway)",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "stephen"
+    },
+    {
+      "id": "b1e7652a-d348-472b-bab6-6f5244bab136",
+      "created_at": "2025-02-13T20:10:13.12111+00:00",
+      "hot_take": "The world would be healthier if we talked about doing nothing and pooping as much as we talk about being productive and eating. ",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "michael hsu"
+    },
+    {
+      "id": "1e7d5047-b354-4489-b10e-2562003a1152",
+      "created_at": "2025-02-13T20:18:13.871078+00:00",
+      "hot_take": "Chat Apps are a terrible means of knowledge transfer.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "won chun"
+    },
+    {
+      "id": "002a414f-3e8a-4e5f-ae35-f2361aac4b15",
+      "created_at": "2025-02-13T20:20:48.261525+00:00",
+      "hot_take": "All your programs should be written in one file (the file can be as long as you want why would you need more????)",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "eric dalva"
+    },
+    {
+      "id": "82f3c4b2-71ae-4b4f-a783-0c771ac6d524",
+      "created_at": "2025-02-13T20:21:41.960248+00:00",
+      "hot_take": "These are cold takes",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "kris"
+    },
+    {
+      "id": "0b3a9e65-3daa-4c53-8da1-89ab47bbdf74",
+      "created_at": "2025-02-13T20:32:21.733022+00:00",
+      "hot_take": "Almost all LLM Benchmarks are a waste of time and resources.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "eric allen"
+    },
+    {
+      "id": "143316b2-d084-44ea-b152-93a6ffab6fee",
+      "created_at": "2025-02-13T20:43:48.077532+00:00",
+      "hot_take": "college undergrad primarily evaluates how much bs work you'll tolerate",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "petey pie"
+    },
+    {
+      "id": "ec302813-54f7-4c59-b863-caf40ddfba24",
+      "created_at": "2025-02-13T20:54:25.786926+00:00",
+      "hot_take": "Automated toilets are a perfect example of technology making something worse in every conceivable way.",
+      "hot_take_game": "8d1b08be-3aab-4d4f-a95d-41c82397a897",
+      "full_name": "nadja rhodes"
+    }
+  ],
+  "full_names": [
+    "aparna n",
+    "bradley dettmer",
+    "jesse chen",
+    "pierre",
+    "sydney lefevre",
+    "spencer kee",
+    "basil muthalaly",
+    "maura",
+    "nolen royalty",
+    "justin schulz",
+    "kevin boyer",
+    "jamie palatnik",
+    "laura woods",
+    "nate woods",
+    "priya misner",
+    "victor",
+    "jack c",
+    "blake g",
+    "tywen k",
+    "sophia",
+    "finn clarke",
+    "suhith rajesh",
+    "nick bergson-shilcock",
+    "hazem",
+    "jess bacheldor",
+    "sam wlody",
+    "michael chung",
+    "daniel sosebee",
+    "sam tetef",
+    "olive abbott",
+    "sherry bai",
+    "russell pasetes",
+    "stephen",
+    "michael hsu",
+    "won chun",
+    "eric dalva",
+    "kris",
+    "eric allen",
+    "petey pie",
+    "nadja rhodes"
+  ]
+}

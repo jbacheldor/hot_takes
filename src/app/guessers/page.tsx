@@ -3,6 +3,7 @@ import './results.css';
 import { useEffect, useState } from 'react';
 import {SubHeader} from "hottake/components/SubHeader";
 import {Guessers as GuessersType} from "hottake/types/all";
+import rawGuessers from "../assets/guessers.json";
 
 const initialData =  [
   {
@@ -14,28 +15,30 @@ const initialData =  [
 
 
 function Guessers() {
-  const pathName = process.env.BASE_URL
+  // const pathName = process.env.BASE_URL
   const [guesserData, setGuesserData] = useState<GuessersType>(initialData)
   const [isLoading, setIsLoading]= useState(true)
 
   useEffect(()=> {
-    const getGuesses = async () => {
-      try {
-        const res = await fetch(`${pathName}/server/guessers`, {
-          method: 'GET'
-        });
-        const resultData = await res.json();
-        console.log('resultData', resultData)
-        setGuesserData(resultData)
-        setIsLoading(false)
-      }catch (e){
-        alert('Error!!!!')
-        console.log(e)
-      }
+    // const getGuesses = async () => {
+    //   try {
+    //     const res = await fetch(`${pathName}/server/guessers`, {
+    //       method: 'GET'
+    //     });
+    //     const resultData = await res.json();
+    //     console.log('resultData', resultData)
+    //     setGuesserData(resultData)
+    //     setIsLoading(false)
+    //   }catch (e){
+    //     alert('Error!!!!')
+    //     console.log(e)
+    //   }
+    // }
+    // const result = getGuesses()
+    // console.log(result)
 
-    }
-    const result = getGuesses()
-    console.log(result)
+    setGuesserData(rawGuessers as GuessersType);
+    setIsLoading(false)
   }, [])
 
   guesserData.sort((a, b) => b.correct_count - a.correct_count)

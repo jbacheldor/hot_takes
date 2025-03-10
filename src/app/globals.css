@@ -41,3 +41,13 @@ a {
     color-scheme: dark;
   }
 }
+
+#navigationBar {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+#navigationBar > a {
+  padding: 0 10px;
+}

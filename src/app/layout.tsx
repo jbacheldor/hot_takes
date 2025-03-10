@@ -25,6 +25,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${orelegaOne.variable}`}>
       <Header />
+      <div id="navigationBar">
+          <a href='/createhottake'>Create Hot Take</a>
+          <a href='/castvotes'>Cast Votes</a>
+          <a href='/results'>Results</a>
+          <a href='/guessers'>Guessers</a>
+        </div>
+        <hr/>
       {children}
       </body>
     </html>

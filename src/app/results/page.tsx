@@ -29,25 +29,25 @@ const initialData = {
 }
 
 function Results() {
-  // const pathName = process.env.BASE_URL
+  const pathName = process.env.BASE_URL
   const [data, setData] = useState<resultsType>(initialData)
   const [isLoading, setIsLoading]= useState(true)
 
   useEffect(()=> {
-    // const getData = async () => {
-      // try {
-      //   const res = await fetch(`${pathName}/server/getresults`, {
-      //     method: 'GET'
-      //   });
-      //   const data = await res.json();
-      //   setData(data)
-      //   setIsLoading(false)
-      // }catch (e){
-      //   alert('Error!!!!')
-      //   console.log(e)
-      // }
-    // }
-    // getData()
+    const getData = async () => {
+      try {
+        const res = await fetch(`${pathName}/server/getresults`, {
+          method: 'GET'
+        });
+        const data = await res.json();
+        setData(data)
+        setIsLoading(false)
+      }catch (e){
+        alert('Error!!!!')
+        console.log(e)
+      }
+    }
+    getData()
     setData(rawResults as resultsType)
     setIsLoading(false)
   }, [])

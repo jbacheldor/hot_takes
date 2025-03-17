@@ -6,8 +6,6 @@ import Dropdown from "hottake/components/Dropdown";
 import {redirect} from "next/navigation";
 import {SubHeader} from "hottake/components/SubHeader";
 
-import rawHotTakes from "../assets/get_takes.json"
-
 // TODO bring this from URL param
 const hot_take_game_id = '8d1b08be-3aab-4d4f-a95d-41c82397a897';
 
@@ -39,11 +37,10 @@ function CastVotes() {
   useEffect(() => {
     async function getHotTakeData() {
       try {
-        // const response = await fetch(`${pathName}/server/gettakes`, {
-        //   method: 'GET',
-        // });
-        // const result = await response.json();
-        const result = rawHotTakes as HotTakeReturnType;
+        const response = await fetch(`${pathName}/server/gettakes`, {
+          method: 'GET',
+        });
+        const result = await response.json();
         const uniqueFullNames = shuffleNames(Array.from(new Set(result.full_names)));
         setHotTakeData({...result, full_names: uniqueFullNames});
         setIsLoading(false);
@@ -113,10 +110,9 @@ function CastVotes() {
               name="full_name"
               value={formState?.full_name}
               onChange={onFullNameChange}
-              disabled
           ></input>
         </label>
-        <button onClick={submitVotes} disabled>submit (disabled)</button>
+        <button onClick={submitVotes}>submit</button>
         </div>
       </div>
     </div>

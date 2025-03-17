@@ -14,22 +14,22 @@ const initalFormState = {
 };
 
 function HotTakes() {
-  // const pathName = process.env.BASE_URL
+  const pathName = process.env.BASE_URL
   const [formState, setFormState] = useState<BaseHotTake>(initalFormState);
   const [warning, setWarning]= useState(false)
 
-  // const insertHotTake = () => {
-  //   const hotTakeData = {
-  //     full_name: formState.full_name.toLowerCase(),
-  //     hot_take_game: hot_take_game_id,
-  //     hot_take: formState.hot_take,
-  //   }
-  //   fetch(`${pathName}/server/inserthottake`, {
-  //     method: 'POST',
-  //     body: JSON.stringify(hotTakeData),
-  //   });
-  //   setFormState(initalFormState);
-  // };
+  const insertHotTake = () => {
+    const hotTakeData = {
+      full_name: formState.full_name.toLowerCase(),
+      hot_take_game: hot_take_game_id,
+      hot_take: formState.hot_take,
+    }
+    fetch(`${pathName}/server/inserthottake`, {
+      method: 'POST',
+      body: JSON.stringify(hotTakeData),
+    });
+    setFormState(initalFormState);
+  };
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if(e.target.name == 'hot_take' && e.target.value.length > 500){
@@ -70,8 +70,7 @@ function HotTakes() {
           ></input>
         </label>
         <hr id="submit-hr"/>
-      <span>no more submissions - it is go time folks</span>
-        <button disabled >submit</button>
+        <button onClick={insertHotTake} >submit</button>
       </div>
     </div>
   );

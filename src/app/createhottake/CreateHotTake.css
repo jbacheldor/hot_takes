@@ -57,10 +57,10 @@ button {
   margin: 15px 0;
 }
 
-/* button:hover {
+button:hover {
   background-color: #ADBEA7;
   cursor: pointer;
-} */
+}
 
 hr#submit-hr {
   margin: 10px;

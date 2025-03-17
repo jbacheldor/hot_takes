@@ -16,6 +16,10 @@ We utilized a techstack of Next.JS, Vercel, and Supabase for this project. This 
 
 The theme and general design of the project was created by Jess in [Figma](https://www.figma.com/design/aCLimfvvYabx1okaTMpPTF/Scalding-Takes?node-id=0-1&t=ruVhOlOzln1sCQM7-1). The project development was created through pair programming in which Bradley directed the implementation and creation of the backend, while Jess drove. Likewise, for the front-end, Bradley drove while Jess directed the creation. This allowed both of us to experiment on tech stacks we were inexperienced, but interested in growing into, while having the safety net of an expert in the passenger seat. The presentation preparation and delivery was executed by both individuals. 
 
+## Supabase Schema Design:
+
+This image details the overview of our database and how our application stored and retained data:  ![schema design image](schema_design.png)
+
 
 ## Current State:
 The game is currently frozen to allow individuals to view the hot takes of their peers without allowing any changes to the data. We migrated the data from the supabase database to a local file to allow supabase to deactivate our instance. We also implemented a navigation bar, which didn’t exist previously, to allow individuals to view all the different pages of our application.

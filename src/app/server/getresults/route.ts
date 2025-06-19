@@ -1,21 +1,9 @@
-import { createClient } from 'hottake/app/server/datastoreclient';
-import { FullHotTake, FullVote } from 'hottake/types/all';
-
 import { NextResponse } from 'next/server';
-import {SupabaseClient} from "@supabase/supabase-js";
+import { hotTakeTable, voteTable } from 'hottake/db/schema';
+import { db } from 'hottake/db';
+import { HotTake, Vote } from 'hottake/types/all';
 
-async function fetchHotTakes(client: SupabaseClient<never, 'public', never>) {
-  const {error: hotTakeError, data: hotTakesData} = await client
-      .from('hot_take')
-      .select();
-  const hotTakes: Array<FullHotTake> = hotTakesData!;
-  if (hotTakeError) {
-    throw new Error('could not process request to fetch hot_take data', hotTakeError);
-  }
-  return hotTakes;
-}
-
-function getUniqueVotes(arr: Array<FullVote>) {
+function getUniqueVotes(arr: Array<Vote>) {
   const seenValues = new Set();
   return arr.filter(obj => {
     const value = obj['full_name_voter'];
@@ -27,39 +15,36 @@ function getUniqueVotes(arr: Array<FullVote>) {
   });
 }
 
-async function fetchVotes(client: SupabaseClient<never, 'public', never>) {
-  const {error: voteError, data: voteData} = await client
-      .from('vote')
-      .select();
-  const votes: Array<FullVote> = voteData!;
-  if (voteError) {
-    throw new Error('could not process request to fetch vote data', voteError);
-  }
-  return votes;
-}
-
 export async function GET() {
-
   try {
-    const client = await createClient();
-    const hotTakes = await fetchHotTakes(client);
-    const votes = await fetchVotes(client);
+    // TODO: filter by hot_take_game_id
+    const hotTakes: Array<HotTake> = await db.select().from(hotTakeTable);
+    const votes: Array<Vote> = await db.select().from(voteTable);
 
-    const results = []
+    const results = [];
 
-    for(const hotTake of hotTakes){
-      const hotTakeVotes = votes.filter((vote)=> vote.hot_take === hotTake.id)
-      const uniqueHotTakeVotes = getUniqueVotes(hotTakeVotes)
+    for (const hotTake of hotTakes) {
+      const hotTakeVotes = votes.filter(
+        vote => vote.hot_take_id === hotTake.id,
+      );
+      const uniqueHotTakeVotes = getUniqueVotes(hotTakeVotes);
 
-      const correctVotes = votes.filter((vote)=> {
-        return vote.full_name_guess === hotTake.full_name
-      })
+      const correctVotes = votes.filter(vote => {
+        return vote.full_name_guess === hotTake.full_name;
+      });
 
-      const uniqueCorrectVotes = getUniqueVotes(correctVotes)
+      const uniqueCorrectVotes = getUniqueVotes(correctVotes);
 
-      const percentage = uniqueHotTakeVotes ? (uniqueCorrectVotes.length / uniqueHotTakeVotes.length) * 100 : 0
+      const percentage =
+        uniqueHotTakeVotes.length > 0
+          ? (uniqueCorrectVotes.length / uniqueHotTakeVotes.length) * 100
+          : 0;
 
-      results.push({hot_take: hotTake.hot_take, percentage: percentage, full_name: hotTake.full_name})
+      results.push({
+        hot_take: hotTake.hot_take,
+        percentage: percentage,
+        full_name: hotTake.full_name,
+      });
     }
 
     return NextResponse.json({ results });

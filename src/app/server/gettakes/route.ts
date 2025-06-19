@@ -1,25 +1,16 @@
-import { createClient } from 'hottake/app/server/datastoreclient';
-
 import { NextResponse } from 'next/server';
+import { hotTakeTable } from 'hottake/db/schema';
+import { db } from 'hottake/db';
 
 export async function GET() {
-
   try {
-    const client = await createClient();
-    const { error, data: hot_takes } = await client
-      .from('hot_take')
-      .select();
-
-    if (error) {
-      throw new Error('could not process request', error);
-    }
-    const full_names: Array<string> = hot_takes.map(take => take.full_name );
-
-    return NextResponse.json({ hot_takes, full_names });
-  } catch (e) {
-    console.log('hark an error is occurring', e);
+    // TODO: filter by hot_take_game_id
+    const data = await db.select().from(hotTakeTable);
+    const full_names: Array<string> = data.map(take => take.full_name!);
+    return NextResponse.json({ hot_takes: data, full_names });
+  } catch {
     return NextResponse.json(
-      { error: ' HARK internal server error, no!!!!' },
+      { error: 'Failed to fetch hot takes' },
       { status: 500 },
     );
   }

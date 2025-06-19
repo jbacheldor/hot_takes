@@ -1,15 +1,14 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import localFont from "next/font/local";
-import {Header} from "hottake/components/Header";
+import localFont from 'next/font/local';
+import { Header } from 'hottake/components/Header';
 
 const orelegaOne = localFont({
-  src: "Lemon-Regular.ttf",
-  display: "swap",
+  src: 'Lemon-Regular.ttf',
+  display: 'swap',
   weight: '400',
-  variable: "--font-my-font",
+  variable: '--font-my-font',
 });
-
 
 export const metadata: Metadata = {
   title: 'Hot Ones',
@@ -24,15 +23,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${orelegaOne.variable}`}>
-      <Header />
-      <div id="navigationBar">
-          <a href='/createhottake'>Create Hot Take</a>
-          <a href='/castvotes'>Cast Votes</a>
-          <a href='/results'>Results</a>
-          <a href='/guessers'>Guessers</a>
+        <Header />
+        <div id="navigationBar">
+          <a href="/createhottake">Create Hot Take</a>
+          <a href="/castvotes">Cast Votes</a>
+          <a href="/results">Results</a>
+          <a href="/guessers">Guessers</a>
         </div>
-        <hr/>
-      {children}
+        <hr />
+        {children}
       </body>
     </html>
   );

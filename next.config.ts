@@ -6,10 +6,10 @@ const nextConfig: NextConfig = {
 
 // Expose base URL to client
 module.exports = {
-    reactStrictMode: true,
-    env: {
-        BASE_URL: process.env.BASE_URL,
-    }
-}
+  reactStrictMode: true,
+  env: {
+    BASE_URL: process.env.BASE_URL,
+  },
+};
 
 export default nextConfig;

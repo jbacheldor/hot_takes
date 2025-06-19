@@ -1,22 +1,14 @@
-import { createClient } from 'hottake/app/server/datastoreclient';
-
 import { NextResponse } from 'next/server';
+import { hotTakeGameTable } from 'hottake/db/schema';
+import { db } from 'hottake/db';
 
 export async function GET() {
   try {
-    const client = await createClient();
-    const { error, data: hot_takes } = await client
-      .from('hot_take_game')
-      .select();
-
-    if (error) {
-      throw new Error('could not process request', error);
-    }
-    return NextResponse.json({ hot_takes });
-  } catch (e) {
-    console.log('hark an error is occurring', e);
+    const data = await db.select().from(hotTakeGameTable);
+    return NextResponse.json({ hot_takes: data });
+  } catch {
     return NextResponse.json(
-      { error: ' HARK internal server error, no!!!!' },
+      { error: 'Failed to fetch winners' },
       { status: 500 },
     );
   }

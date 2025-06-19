@@ -17,9 +17,10 @@ label {
   color: white;
 }
 
-input, textarea {
+input,
+textarea {
   color: black;
-  background-color: #C5D6BF;
+  background-color: #c5d6bf;
   border-radius: 10px;
   border-style: none;
   min-width: 100px;
@@ -28,7 +29,8 @@ input, textarea {
   font-family: var(--font-my-font);
 }
 
-input:focus,  textarea:focus{
+input:focus,
+textarea:focus {
   border-style: none;
   outline: none;
   padding: 10px;
@@ -52,13 +54,13 @@ button {
   padding: 10px;
   border-radius: 5px;
   border-style: none;
-  background-color: #C5D6BF;
+  background-color: #c5d6bf;
   font-family: var(--font-my-font);
   margin: 15px 0;
 }
 
 button:hover {
-  background-color: #ADBEA7;
+  background-color: #adbea7;
   cursor: pointer;
 }
 
@@ -74,4 +76,3 @@ span#warnings {
   justify-content: center;
   color: black;
 }
-

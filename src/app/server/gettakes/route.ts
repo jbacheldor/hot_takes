@@ -1,13 +1,12 @@
-import { NextResponse } from 'next/server';
-import { hotTakeTable } from 'hottake/db/schema';
-import { db } from 'hottake/db';
+import { NextRequest, NextResponse } from 'next/server';
+import { getHotTakes } from 'hottake/db/schema';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const game_id = Number(req.nextUrl.searchParams.get('game_id')!);
   try {
-    // TODO: filter by hot_take_game_id
-    const data = await db.select().from(hotTakeTable);
-    const full_names: Array<string> = data.map(take => take.full_name!);
-    return NextResponse.json({ hot_takes: data, full_names });
+    const hot_takes = await getHotTakes(game_id);
+    const full_names: Array<string> = hot_takes.map(take => take.full_name!);
+    return NextResponse.json({ hot_takes, full_names });
   } catch {
     return NextResponse.json(
       { error: 'Failed to fetch hot takes' },

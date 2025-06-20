@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from 'hottake/db';
 import { voteTable } from 'hottake/db/schema';
-import {SubmitVotes} from "hottake/types/all";
+import { SubmitVotes } from 'hottake/types/all';
 
 export async function POST(req: NextRequest) {
   try {

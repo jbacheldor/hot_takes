@@ -1,7 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { Guesser, Guessers, HotTake, Vote } from 'hottake/types/all';
-import { hotTakeTable, voteTable } from 'hottake/db/schema';
-import { db } from 'hottake/db';
+import { getHotTakes, getVotes } from 'hottake/db/schema';
 
 function getUniqueVoterNames(arr: Array<Vote>) {
   return [...new Set(arr.map(item => item['full_name_voter']))];
@@ -32,11 +31,12 @@ function getCorrectCount(
   return correctCount;
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const game_id = Number(req.nextUrl.searchParams.get('game_id')!);
+  console.log(game_id);
   try {
-    // TODO: filter by hot_take_game_id
-    const hotTakes: Array<HotTake> = await db.select().from(hotTakeTable);
-    const votes: Array<Vote> = await db.select().from(voteTable);
+    const hotTakes: Array<HotTake> = await getHotTakes(game_id);
+    const votes: Array<Vote> = await getVotes(game_id);
     const uniqueVoterNames = getUniqueVoterNames(votes);
     const hotTakeMap: Map<number, HotTake> = new Map(
       hotTakes.map(hotTake => [hotTake.id, hotTake]),
@@ -47,6 +47,7 @@ export async function GET() {
       const correctCount = getCorrectCount(voterFullName, hotTakeMap, votes);
       results.push({ full_name: voterFullName, correct_count: correctCount });
     }
+    results.sort((a, b) => b.correct_count - a.correct_count);
     return NextResponse.json(results);
   } catch (e) {
     console.log('hark an error is occurring', e);

@@ -3,32 +3,32 @@ import './CreateHotTake.css';
 import { useState } from 'react';
 import { BaseHotTake } from 'hottake/types/all';
 import { SubHeader } from 'hottake/components/SubHeader';
+import { useSearchParams } from 'next/navigation';
 
-// TODO: bring hot_take_game_id from URL param
-const hot_take_game_id = 1;
-
-const initalFormState = {
+const initialFormState = {
   full_name: '',
-  hot_take_game_id,
+  hot_take_game_id: 0,
   hot_take: '',
 };
 
 function HotTakes() {
   const pathName = process.env.BASE_URL;
-  const [formState, setFormState] = useState<BaseHotTake>(initalFormState);
+  const [formState, setFormState] = useState<BaseHotTake>(initialFormState);
   const [warning, setWarning] = useState(false);
+  const searchParams = useSearchParams();
+  const game_id = searchParams.get('game_id')!;
 
   const insertHotTake = () => {
     const hotTakeData = {
       full_name: formState.full_name.toLowerCase(),
-      hot_take_game_id: hot_take_game_id,
+      hot_take_game_id: game_id,
       hot_take: formState.hot_take,
     };
-    fetch(`${pathName}/server/inserthottake`, {
+    fetch(`${pathName}/server/createhottake`, {
       method: 'POST',
       body: JSON.stringify(hotTakeData),
     });
-    setFormState(initalFormState);
+    setFormState(initialFormState);
   };
 
   const onChangeHandler = (

@@ -4,7 +4,7 @@ import { hotTakeGameTable } from 'hottake/db/schema';
 
 export async function POST(req: NextRequest) {
   try {
-    const { title } = await req.json();
+    const { title, voting_live_at } = await req.json();
 
     if (!title || title.length < 2) {
       return NextResponse.json(
@@ -12,8 +12,14 @@ export async function POST(req: NextRequest) {
         { status: 400 },
       );
     }
-    await db.insert(hotTakeGameTable).values({ title });
-    return NextResponse.json({ message: 'success' });
+    const result = await db
+      .insert(hotTakeGameTable)
+      .values({ title, voting_live_at })
+      .returning({ id: hotTakeGameTable.id });
+    return NextResponse.json({
+      message: 'success',
+      hot_take_game_id: result[0].id,
+    });
   } catch (e) {
     console.log('hark an error is occurring', e);
     return NextResponse.json(

@@ -1,5 +1,6 @@
 import { sqliteTable, integer, text } from 'drizzle-orm/sqlite-core';
-import { sql } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
+import { db } from 'hottake/db/index';
 
 export const hotTakeGameTable = sqliteTable('hot_take_game', {
   id: integer('id').primaryKey(),
@@ -37,3 +38,17 @@ export const voteTable = sqliteTable('vote', {
   full_name_voter: text('full_name_voter').notNull(),
   full_name_guess: text('full_name_guess').notNull(),
 });
+
+export async function getHotTakes(game_id: number) {
+  return db
+    .select()
+    .from(hotTakeTable)
+    .where(eq(hotTakeTable.hot_take_game_id, game_id));
+}
+
+export async function getVotes(game_id: number) {
+  return db
+    .select()
+    .from(voteTable)
+    .where(eq(voteTable.hot_take_game_id, game_id));
+}

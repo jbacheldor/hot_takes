@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 export default function Home() {
   return (
     <div className={styles.page}>
-      <main className={styles.main}>{redirect(`/createhottake`)}</main>
+      <main className={styles.main}>{redirect(`/creategame`)}</main>
     </div>
   );
 }

@@ -5,13 +5,11 @@ import { HotTakeReturnType, SubmitVotes } from 'hottake/types/all';
 import Dropdown from 'hottake/components/Dropdown';
 import { redirect } from 'next/navigation';
 import { SubHeader } from 'hottake/components/SubHeader';
-
-// TODO: bring hot_take_game_id from URL param
-const hot_take_game_id = 1;
+import { useSearchParams } from 'next/navigation';
 
 const initialFormState = {
   full_name: '',
-  hot_take_game_id: hot_take_game_id,
+  hot_take_game_id: 0,
   votes: [],
 };
 
@@ -26,25 +24,33 @@ function shuffleNames(array: Array<string>) {
 function CastVotes() {
   const pathName = process.env.BASE_URL;
   const [formState, setFormState] = useState<SubmitVotes>(initialFormState);
+  const [isLoading, setIsLoading] = useState(true);
+  const searchParams = useSearchParams();
+  const game_id = searchParams.get('game_id');
 
   const [hotTakeData, setHotTakeData] = useState<HotTakeReturnType>({
     full_names: [],
     hot_takes: [],
   });
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function getHotTakeData() {
       try {
-        const response = await fetch(`${pathName}/server/gettakes`, {
-          method: 'GET',
-        });
-        const result = await response.json();
-        const uniqueFullNames = shuffleNames(
-          Array.from(new Set(result.full_names)),
+        const response = await fetch(
+          `${pathName}/server/gettakes?game_id=${game_id}`,
+          {
+            method: 'GET',
+          },
         );
-        setHotTakeData({ ...result, full_names: uniqueFullNames });
-        setIsLoading(false);
+        const result = await response.json();
+
+        if (result.full_names.length > 0) {
+          const uniqueFullNames = shuffleNames(
+            Array.from(new Set(result.full_names)),
+          );
+          setHotTakeData({ ...result, full_names: uniqueFullNames });
+          setIsLoading(false);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
         setIsLoading(false);
@@ -72,10 +78,10 @@ function CastVotes() {
 
     const result = await fetch(`${pathName}/server/castvotes/`, {
       method: 'POST',
-      body: JSON.stringify({ ...formState, votes }),
+      body: JSON.stringify({ ...formState, votes, hot_take_game_id: game_id }),
     });
     console.log('POST result', result);
-    if (result.ok) redirect('/results');
+    if (result.ok) redirect('/results?game_id=' + game_id);
 
     setFormState(initialFormState);
   };
@@ -90,25 +96,25 @@ function CastVotes() {
     setFormState({ ...formState, votes });
   }
 
+  if (!isLoading && hotTakeData.hot_takes.length === 0) {
+    return <></>;
+  }
+
   return (
     <div>
       <SubHeader subHeaders={['Votes! Submit your votes!']} />
       <SubHeader subHeaders={['hot take', 'assumed author']} />
       <div className="hot-body">
-        {isLoading ? (
-          <>loading</>
-        ) : (
-          hotTakeData.hot_takes.map((take, i) => (
-            <div key={`hot-take-${i}`} className="hot-take-vote">
-              <span className={'hot-span-vote'}>{take.hot_take}</span>
-              <Dropdown
-                fullNames={hotTakeData.full_names}
-                hotTakeId={take.id}
-                handleSelect={updateVotes}
-              />
-            </div>
-          ))
-        )}
+        {hotTakeData.hot_takes.map((take, i) => (
+          <div key={`hot-take-${i}`} className="hot-take-vote">
+            <span className={'hot-span-vote'}>{take.hot_take}</span>
+            <Dropdown
+              fullNames={hotTakeData.full_names}
+              hotTakeId={take.id}
+              handleSelect={updateVotes}
+            />
+          </div>
+        ))}
         <hr />
         <div className="submit-votes-row">
           <label>

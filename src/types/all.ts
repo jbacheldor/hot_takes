@@ -1,10 +1,13 @@
-export type HotTakeGame = {
-  id: number;
-  created_at: string;
+export type BaseGame = {
   title: string;
   voting_live_at: string;
-  completed_at: string;
 };
+
+export interface Game extends BaseGame {
+  id: number;
+  created_at: string;
+  completed_at?: string;
+}
 
 export type BaseHotTake = {
   full_name: string;
@@ -51,3 +54,13 @@ export type Guesser = {
 };
 
 export type Guessers = Array<Guesser>;
+
+export type ResultData = {
+  full_name: string;
+  hot_take: string;
+  percentage: number;
+};
+
+export type ResultsContainer = {
+  results: ResultData[];
+};

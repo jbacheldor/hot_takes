@@ -1,7 +1,6 @@
-import { NextResponse } from 'next/server';
-import { hotTakeTable, voteTable } from 'hottake/db/schema';
-import { db } from 'hottake/db';
-import { HotTake, Vote } from 'hottake/types/all';
+import { NextRequest, NextResponse } from 'next/server';
+import { getHotTakes, getVotes } from 'hottake/db/schema';
+import { HotTake, ResultData, Vote } from 'hottake/types/all';
 
 function getUniqueVotes(arr: Array<Vote>) {
   const seenValues = new Set();
@@ -15,13 +14,16 @@ function getUniqueVotes(arr: Array<Vote>) {
   });
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const game_id = Number(req.nextUrl.searchParams.get('game_id')!);
+  let results: Array<ResultData> = [];
   try {
-    // TODO: filter by hot_take_game_id
-    const hotTakes: Array<HotTake> = await db.select().from(hotTakeTable);
-    const votes: Array<Vote> = await db.select().from(voteTable);
+    const hotTakes: Array<HotTake> = await getHotTakes(game_id);
+    const votes: Array<Vote> = await getVotes(game_id);
 
-    const results = [];
+    if (votes.length === 0) {
+      return NextResponse.json({ results });
+    }
 
     for (const hotTake of hotTakes) {
       const hotTakeVotes = votes.filter(
@@ -47,12 +49,13 @@ export async function GET() {
       });
     }
 
+    results = results.sort(
+      (a: ResultData, b: ResultData) => b.percentage - a.percentage,
+    );
+
     return NextResponse.json({ results });
   } catch (e) {
     console.log('hark an error is occurring', e);
-    return NextResponse.json(
-      { error: ' HARK internal server error, no!!!!' },
-      { status: 500 },
-    );
+    return NextResponse.json({ results }); // TODO make it return an error again
   }
 }

@@ -2,41 +2,35 @@
 import './results.css';
 import { useEffect, useState } from 'react';
 import { SubHeader } from 'hottake/components/SubHeader';
+import { useSearchParams } from 'next/navigation';
+import { ResultsContainer } from 'hottake/types/all';
 
-type dataType = {
-  full_name: string;
-  hot_take: string;
-  percentage: number;
-};
-
-type resultsType = {
-  results: dataType[];
-};
 const initialData = {
-  results: [
-    { full_name: '', hot_take: '', percentage: 0 },
-    { full_name: '', hot_take: '', percentage: 0 },
-    { full_name: '', hot_take: '', percentage: 0 },
-    { full_name: '', hot_take: '', percentage: 0 },
-  ],
+  results: [{ full_name: '', hot_take: '', percentage: 0 }],
 };
 
 function Results() {
   const pathName = process.env.BASE_URL;
-  const [data, setData] = useState<resultsType>(initialData);
+  const [data, setData] = useState<ResultsContainer>(initialData);
   const [isLoading, setIsLoading] = useState(true);
+  const searchParams = useSearchParams();
+  const game_id = searchParams.get('game_id')!;
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await fetch(`${pathName}/server/getresults`, {
-          method: 'GET',
-        });
+        const res = await fetch(
+          `${pathName}/server/getresults?game_id=${game_id}`,
+          {
+            method: 'GET',
+          },
+        );
         const data = await res.json();
-        setData(data);
-        setIsLoading(false);
+        if (data && data.results.length > 0) {
+          setData(data);
+          setIsLoading(false);
+        }
       } catch (e) {
-        alert('Error!!!!');
         console.log(e);
       }
     };
@@ -44,9 +38,14 @@ function Results() {
     setIsLoading(false);
   }, []);
 
-  const results = data.results.sort(
-    (a: dataType, b: dataType) => b.percentage - a.percentage,
-  );
+  if (!isLoading && data.results.length === 0) {
+    return (
+      <>
+        <SubHeader subHeaders={['Performance Eval!!', '% accuracy!!!']} />
+      </>
+    );
+  }
+
   return (
     <div>
       <SubHeader subHeaders={['Performance Eval!!', '% accuracy!!!']} />
@@ -58,8 +57,8 @@ function Results() {
         </div>
         {isLoading}
         <div id="data-rows">
-          {results &&
-            results.map((value, key) => {
+          {data.results &&
+            data.results.map((value, key) => {
               return (
                 <div id="resultsrows" key={key}>
                   <span className="values">{value.full_name}</span>

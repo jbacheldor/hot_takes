@@ -6,7 +6,7 @@
 
 Jess was inspired by the [Subway Takes by Kareem Rahma](https://www.youtube.com/@SubwayTakes) and we wanted to create something similar so our friends at the Recurse Center could play a game together and foster community.
 
-We polled [Recuse Center](https://www.recurse.com/) attendees throughout the week to gather their hot takes through the submit page so that we could present the experience during a five minute demonstration. We accumulated 40 different hot take records leading into the demo and froze the submission page to ensure a consistent experience.
+We polled [Recurse Center](https://www.recurse.com/) attendees throughout the week to gather their hot takes through the submit page so that we could present the experience during a five minute demonstration. We accumulated 40 different hot take records leading into the demo and froze the submission page to ensure a consistent experience.
 
 For the demonstration, we presented the hot take’s cast vote page to a crowd of 50 people virtually and in-person and had them guess which individual submitted each hot take. Finally, we revealed who said what on the results page - detailing how accurate the crowd was in guessing the hot take author and the guessers page which shows who was most accurate in guessing everyone’s hot take.
 

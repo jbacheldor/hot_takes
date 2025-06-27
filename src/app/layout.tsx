@@ -3,6 +3,7 @@ import './globals.css';
 import localFont from 'next/font/local';
 import { Header } from 'hottake/components/Header';
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from "react"
 
 const orelegaOne = localFont({
   src: 'Lemon-Regular.ttf',
@@ -11,39 +12,42 @@ const orelegaOne = localFont({
   variable: '--font-my-font',
 });
 
+function NavigationBar() {
+  const searchParams = useSearchParams();
+  const game_id = searchParams.get('game_id');
+
+  if (!game_id) {
+    return null;
+  }
+
+  return (
+    <div id="navigationBar">
+      <a href={'/creategame'}>Create New Game</a>
+      <a href={'/createhottake?game_id=' + game_id}>Create Hot Take</a>
+      <a href={'/castvotes?game_id=' + game_id}>Cast Votes</a>
+      <a href={'/results?game_id=' + game_id}>Results</a>
+      <a href={'/guessers?game_id=' + game_id}>Guessers</a>
+    </div>
+  );
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const searchParams = useSearchParams();
-
-  const game_id = searchParams.get('game_id');
-  if (game_id) {
-    return (
-      <html lang="en">
-        <body className={`${orelegaOne.variable}`}>
-          <Header />
-          <div id="navigationBar">
-            <a href={'/creategame'}>Create New Game</a>
-            <a href={'/createhottake?game_id=' + game_id}>Create Hot Take</a>
-            <a href={'/castvotes?game_id=' + game_id}>Cast Votes</a>
-            <a href={'/results?game_id=' + game_id}>Results</a>
-            <a href={'/guessers?game_id=' + game_id}>Guessers</a>
-          </div>
-          <hr />
+  return (
+    <html lang="en">
+      <body className={`${orelegaOne.variable}`}>
+        <Header />
+        <Suspense fallback={<div>loading...</div>}>
+          <NavigationBar />
+        </Suspense>
+        <hr />
+        <Suspense fallback={<div>loading...</div>}>
           {children}
-        </body>
-      </html>
-    );
-  } else {
-    return (
-      <html lang="en">
-        <body className={`${orelegaOne.variable}`}>
-          <Header />
-          {children}
-        </body>
-      </html>
-    );
-  }
+        </Suspense>
+      </body>
+    </html>
+  );
 }

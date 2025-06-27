@@ -15,7 +15,6 @@ function Game() {
   const router = useRouter();
   const pathName = process.env.BASE_URL;
   const [formState, setFormState] = useState<BaseGame>(initalFormState);
-  const [gameCreated, setGameCreated] = useState(false);
 
   const createGame = async () => {
     const hotTakeData = {
@@ -27,7 +26,6 @@ function Game() {
       body: JSON.stringify(hotTakeData),
     });
     setFormState(initalFormState);
-    setGameCreated(true);
     const result_json = await result.json();
     router.push('/createhottake?game_id=' + result_json.hot_take_game_id);
   };

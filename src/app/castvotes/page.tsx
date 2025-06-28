@@ -37,7 +37,7 @@ function CastVotes() {
     async function getHotTakeData() {
       try {
         const response = await fetch(
-          `${pathName}/server/gettakes?game_id=${game_id}`,
+          `${pathName}/server/hot_takes?game_id=${game_id}`,
           {
             method: 'GET',
           },
@@ -76,7 +76,7 @@ function CastVotes() {
       return true;
     });
 
-    const result = await fetch(`${pathName}/server/castvotes/`, {
+    const result = await fetch(`${pathName}/server/votes/`, {
       method: 'POST',
       body: JSON.stringify({ ...formState, votes, hot_take_game_id: game_id }),
     });

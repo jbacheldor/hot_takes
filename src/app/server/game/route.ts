@@ -28,3 +28,15 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+export async function GET() {
+  try {
+    const data = await db.select().from(hotTakeGameTable);
+    return NextResponse.json({ hot_takes: data });
+  } catch {
+    return NextResponse.json(
+      { error: 'Failed to fetch winners' },
+      { status: 500 },
+    );
+  }
+}

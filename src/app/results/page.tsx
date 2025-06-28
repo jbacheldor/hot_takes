@@ -20,7 +20,7 @@ function Results() {
     const getData = async () => {
       try {
         const res = await fetch(
-          `${pathName}/server/getresults?game_id=${game_id}`,
+          `${pathName}/server/results?game_id=${game_id}`,
           {
             method: 'GET',
           },

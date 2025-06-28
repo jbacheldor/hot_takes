@@ -21,7 +21,7 @@ function Game() {
       title: formState.title.toLowerCase(),
       voting_live_at: formState.voting_live_at,
     };
-    const result = await fetch(`${pathName}/server/creategame`, {
+    const result = await fetch(`${pathName}/server/game`, {
       method: 'POST',
       body: JSON.stringify(hotTakeData),
     });

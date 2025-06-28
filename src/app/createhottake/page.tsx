@@ -24,7 +24,7 @@ function HotTakes() {
       hot_take_game_id: game_id,
       hot_take: formState.hot_take,
     };
-    fetch(`${pathName}/server/createhottake`, {
+    fetch(`${pathName}/server/hot_takes`, {
       method: 'POST',
       body: JSON.stringify(hotTakeData),
     });

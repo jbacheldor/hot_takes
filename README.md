@@ -55,3 +55,10 @@ npm run dev
 2. Import [Github repo into Vercel](https://vercel.com/docs/git#deploying-a-git-repository)
 3. Add credentials from `.env` to Vercel
 4. Frontend and Backend are automatically deployed upon push to Github main branch
+
+
+# Future Enhancements
+1. When users create a new game, they also input a start date
+2. Add new fields to game state on creation: "hot_take_deadline": date & "cast_votes_deadline": of set time increments (5 mins, 30 mins, 1 hour) 
+3. Conditionally render routes according to point 2 - not showing "create hot take" route when the hot_take_dealine has pasted and not showing "cast votes", "results", "guessers"
+4. Admin page & login to alter start date and end date or remove hot takes

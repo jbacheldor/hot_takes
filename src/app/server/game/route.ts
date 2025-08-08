@@ -4,7 +4,7 @@ import { hotTakeGameTable } from 'hottake/db/schema';
 
 export async function POST(req: NextRequest) {
   try {
-    const { title, voting_live_at } = await req.json();
+    const { title, voting_live_at, completed_at } = await req.json();
 
     if (!title || title.length < 2) {
       return NextResponse.json(
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     }
     const result = await db
       .insert(hotTakeGameTable)
-      .values({ title, voting_live_at })
+      .values({ title, voting_live_at, completed_at })
       .returning({ id: hotTakeGameTable.id });
     return NextResponse.json({
       message: 'success',

@@ -8,8 +8,8 @@ export const hotTakeGameTable = sqliteTable('hot_take_game', {
     .notNull()
     .default(sql`(current_timestamp)`),
   title: text('title').notNull(),
-  voting_live_at: text('voting_live_at'),
-  completed_at: text('completed_at'),
+  voting_live_at: text('voting_live_at').notNull(),
+  completed_at: text('completed_at').notNull(),
 });
 
 export const hotTakeTable = sqliteTable('hot_take', {

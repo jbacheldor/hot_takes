@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 const initalFormState = {
   title: '',
   voting_live_at: new Date().toISOString(),
-  completed_at: undefined,
+  completed_at: new Date(new Date().getTime()+ 1000 * 60 * 10).toISOString(),
 };
 
 function Game() {
@@ -20,6 +20,7 @@ function Game() {
     const hotTakeData = {
       title: formState.title.toLowerCase(),
       voting_live_at: formState.voting_live_at,
+      completed_at: formState.completed_at
     };
     const result = await fetch(`${pathName}/server/game`, {
       method: 'POST',

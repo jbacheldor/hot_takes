@@ -1,12 +1,13 @@
 export type BaseGame = {
   title: string;
   voting_live_at: string;
+  completed_at: string,
 };
 
 export interface Game extends BaseGame {
   id: number;
   created_at: string;
-  completed_at?: string;
+  completed_at: string;
 }
 
 export type BaseHotTake = {
